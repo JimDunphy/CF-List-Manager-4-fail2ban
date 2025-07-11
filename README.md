@@ -128,10 +128,10 @@ maxretry = 5
 
 ## 🔗 Cloudflare API Resources
 
-- [List Lists](https://developers.cloudflare.com/api/operations/rules-lists-list-lists)
-- [List Items](https://developers.cloudflare.com/api/operations/rules-lists-get-list-items)
-- [Add Items](https://developers.cloudflare.com/api/operations/rules-lists-update-list-items)
-- [Remove Items](https://developers.cloudflare.com/api/operations/rules-lists-delete-list-items)
+- [List Lists](https://developers.cloudflare.com/api/resources/rules/subresources/lists/)
+- [List Items](https://developers.cloudflare.com/api/resources/rules/subresources/lists/subresources/items/)
+- [Add Items](https://developers.cloudflare.com/api/resources/rules/subresources/lists/subresources/items/methods/create/)
+- [Remove Items](https://developers.cloudflare.com/api/resources/rules/subresources/lists/subresources/items/methods/delete/)
 - [API Tokens](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/)
 
 ---
