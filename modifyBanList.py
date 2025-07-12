@@ -52,7 +52,7 @@ LIST_IDS = {
 }
 # ────────────────────────────────────────────────────────────────────────────── #
 
-VERSION = "1.2.0"
+VERSION = "1.2.1"
 
 
 def get_api_endpoint(list_id: str) -> str:
@@ -107,10 +107,9 @@ def api_delete(list_id: str, payload: Any) -> requests.Response:
 
 
 def ipv6_to_slash64(addr: str) -> str:
-    ip6 = ipaddress.IPv6Address(addr)  # raises if not IPv6
-    first4 = str(ip6.exploded).split(":")[:4]
-    return ":".join(first4) + "::/64"
-
+    ip6 = ipaddress.IPv6Address(addr)
+    net = ipaddress.IPv6Network(f"{ip6}/64", strict=False)
+    return str(net.compressed)
 
 def pretty_print_list(result: List[Dict[str, Any]]) -> None:
     if not result:
@@ -161,6 +160,17 @@ def main(argv: Optional[List[str]] = None) -> None:
     existing = api_get(list_id)["result"]
 
     if args.action == "del":
+
+        #cloudflare adds /64 on insertion so we need to match that for del
+        try:
+            ip_obj = ipaddress.ip_address(args.ip)
+            if ip_obj.version == 6:
+                ip_to_use = ipv6_to_slash64(args.ip)
+            else:
+                ip_to_use = args.ip
+        except ValueError:
+            ip_to_use = args.ip  # fallback for malformed or already-CIDR
+
         item_id = next((i["id"] for i in existing if i["ip"] == ip_to_use), None)
         if not item_id:
             print(f"[INFO] {ip_to_use} not in list – nothing to do.")
