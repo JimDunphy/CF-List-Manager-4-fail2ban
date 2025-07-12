@@ -22,7 +22,7 @@ To use this tool effectively, the following setup is required:
 2. **Origin Firewall Rules** – Your origin server’s firewall must be configured to allow **only** Cloudflare IPs and block all direct traffic.
 3. **Pre-Created IP List** – You must have already created one or more Cloudflare IP Lists under **Account → Configurations → Lists**.
 4. **Associated Firewall Rules** – You must have firewall rules configured to act on these lists. For example, you can block or challenge IPs that are on a specific list when they access your site via Cloudflare.
-5. **Cloudflare Lists** – These are account wide with CF and even the free accounts can create custom lists [https://developers.cloudflare.com/waf/tools/lists/#availability limit]
+5. **Cloudflare Lists** – These are account wide with CF and even the free accounts can create custom lists [https://developers.cloudflare.com/waf/tools/lists/#availability](limit)
 
 You will also need:
 
