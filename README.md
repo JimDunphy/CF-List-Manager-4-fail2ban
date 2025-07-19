@@ -1,7 +1,7 @@
 
 # Cloudflare IP List Manager
 
-A Python script to add, delete, or list IP addresses in a [Cloudflare Custom IP List](https://developers.cloudflare.com/api/resources/rules/subresources/lists/) using the Cloudflare API. This is particularly useful when integrated with **Fail2Ban** as a custom action to dynamically manage malicious IPs.
+A Python script to add, delete, or list IP addresses in a [Cloudflare Custom IP List](https://developers.cloudflare.com/api/resources/rules/subresources/lists/) using the Cloudflare API. This is particularly useful when integrated with **Fail2Ban** as a custom action to dynamically manage malicious IPs from remote client's access through clouflares proxy service. 
 
 ---
 
@@ -19,7 +19,7 @@ A Python script to add, delete, or list IP addresses in a [Cloudflare Custom IP 
 To use this tool effectively, the following setup is required:
 
 1. **Cloudflare Proxy Enabled** – Your domain must be proxied through Cloudflare (orange cloud enabled).
-2. **Origin Firewall Rules** – Your origin server’s firewall must be configured to allow **only** Cloudflare IPs and block all direct traffic.
+2. **Origin Firewall Rules** – Your origin server’s firewall must be configured to allow **only** Cloudflare IPs and block all direct traffic. 
 3. **Pre-Created IP List** – You must have already created one or more Cloudflare IP Lists under **Account → Configurations → Lists**.
 4. **Associated Firewall Rules** – You must have firewall rules configured to act on these lists. For example, you can block or challenge IPs that are on a specific list when they access your site via Cloudflare.
 5. **Cloudflare Lists** – These are account wide with CF and even the free accounts can create custom lists [limit](https://developers.cloudflare.com/waf/tools/lists/#availability)
